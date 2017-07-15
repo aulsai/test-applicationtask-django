@@ -1,0 +1,46 @@
+{% extends 'solar_app/base.html' %} 
+{% load static %}
+
+
+{% block content %}
+    <h1>
+        Site Details - {{ object|default:'' }}
+    </h1>
+
+    <table class="table">
+        <thead>
+            <th>
+                Date
+            </th>
+            <th>
+                A Value
+            </th>
+            <th>
+                B Value
+            </th>
+        </thead>
+        <tbody>
+            {% for sd in object_list %}
+            <tr>
+                <td>
+                    {{ sd.date|date:"M. d, Y" }}
+                </td>
+                <td>
+                    {{ sd.val_a|floatformat:2 }}
+                </td>
+                <td>
+                    {{ sd.val_b|floatformat:2 }}
+                </td>
+            </tr>            
+            {% endfor %}
+            
+            {% if not object_list %}
+            <tr class="text-center">
+                <td colspan="3">
+                    Empty
+                </td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

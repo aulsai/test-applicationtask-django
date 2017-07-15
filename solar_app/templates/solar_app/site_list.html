@@ -1,0 +1,18 @@
+{% extends 'solar_app/base.html' %} 
+{% load static %}
+
+
+{% block content %}
+    <h1>
+        Sites
+    </h1>
+    <ul class="list-group">    
+    {% for site_detail in object_list %}
+        <li class="list-group-item">
+            <a href="{% url 'site-detail' site_detail.pk %}">
+            {{ site_detail }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

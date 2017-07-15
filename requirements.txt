@@ -1,0 +1,2 @@
+django
+coverage==4.4.1

@@ -1,0 +1,47 @@
+{% extends 'solar_app/base.html' %} {% load static %} 
+{% block content %}
+<h1>
+    Summary
+</h1>
+
+{% with url_name=request.resolver_match.url_name %}
+<a class="btn btn-primary {% if url_name == 'site-summary' %}active{% endif %}" 
+    href="{% url 'site-summary' %}">
+    Sum
+</a>
+
+<a class="btn btn-primary {% if url_name == 'site-summary-average' %}active{% endif %}" 
+    href="{% url 'site-summary-average' %}">
+    Average
+</a>
+{% endwith %}
+
+<table class="table">
+    <thead>
+        <th>
+            Site
+        </th>
+        <th>
+            A Value
+        </th>
+        <th>
+            B Value
+        </th>
+    </thead>
+    <tbody>
+        {% for obj in object_list %}
+        <tr>
+            <td>
+                {{ obj.site_name }}
+            </td>
+            <td>
+                {{ obj.val_a|floatformat:2 }}
+            </td>
+            <td>
+                {{ obj.val_b|floatformat:2 }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
