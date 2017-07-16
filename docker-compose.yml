@@ -1,0 +1,19 @@
+version: '2'
+services:
+  #db:
+  #  image: postgres
+  #  restart: always
+  #  volumes:
+  #    - ./data:/var/lib/postgresql/data
+  #  ports:
+  #    - "5432:5432"
+  web:
+    image: image_name:1.0
+    command: ./entry-point.sh
+    restart: always
+    volumes:
+      - .:/code
+    ports:
+      - "80:8000"      
+   # depends_on:
+   #   - db
